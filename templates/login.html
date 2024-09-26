@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion du Jury</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Connexion Jury</h1>
-    <form method="POST">
-        <label for="password">Mot de passe:</label>
-        <input type="password" name="password">
-        <input type="submit" value="Se connecter">
-    </form>
+    <div class="container">
+        <h1>Connexion Jury</h1>
+        <form method="POST">
+            <label for="password">Mot de passe:</label>
+            <input type="password" name="password">
+            <input type="submit" value="Se connecter">
+        </form>
+    </div>
+    <footer>
+        <div class="footer">
+            © 2024 - Mon application
+        </div>
+    </footer>
 </body>
 </html>

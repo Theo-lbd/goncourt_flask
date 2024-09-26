@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Livres</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Liste des Livres</h1>
-    <ul>
-    {% for book in books %}
-        <li>{{ book.title }} - Auteur ID: {{ book.author_id }} - Editeur ID: {{ book.publisher_id }}</li>
-    {% endfor %}
-    </ul>
-    <a href="/">Retour à l'accueil</a>
+    <div class="container">
+        <h1>Liste des Livres</h1>
+        <ul class="book-list">
+            {% for book in books %}
+            <li>
+                <span class="book-title">{{ book.title }}</span> <br>
+                <span class="author-name">{{ book.author_name }}</span> <br>
+                <span class="publisher-name">{{ book.publisher_name }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="/">Retour à l'accueil</a>
+    </div>
+    <div class="footer">
+        <p>© 2024 - Mon application</p>
+    </div>
 </body>
 </html>

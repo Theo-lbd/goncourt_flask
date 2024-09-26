@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+/* Style pour les boutons */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+    background-color: rgb(199, 23, 0); /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement intérieur */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Pointeur en forme de main */
+    font-size: 1em; /* Taille de police */
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="radio"]:hover,
+input[type="checkbox"]:hover {
+    background-color: rgb(199, 23, 10); /* Couleur de fond lors du survol */
+}
+
+/* Style pour les liens */
+a {
+    color: rgb(199, 23, 0); /* Couleur des liens */
+    text-decoration: none; /* Retirer le soulignement */
+    font-weight: bold; /* Rendre le texte plus gras */
+}
+
+a:hover {
+    text-decoration: underline; /* Ajouter un soulignement lors du survol */
+}
+
+.book-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.book-list li:last-child {
+    border-bottom: none;
+}
+
+.book-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.author-name {
+    color: #555;
+}
+
+.publisher-name {
+    color: #777;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #aaa;
+}

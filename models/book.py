@@ -9,6 +9,8 @@ class Book:
         self.price = price
         self.author_id = author_id
         self.publisher_id = publisher_id
+        self.author_name = None
+        self.publisher_name = None
 
     def __repr__(self):
         return f"livre : {self.title}"

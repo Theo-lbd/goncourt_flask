@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livre Gagnant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Le Gagnant du Prix Goncourt</h1>
-    {% if winner_book %}
-        <p>Le livre gagnant est : <strong>{{ winner_book.title }}</strong></p>
-    {% else %}
-        <p>Aucun gagnant sélectionné pour l'instant.</p>
-    {% endif %}
-    <a href="{{ url_for('revote') }}">Recommencer le vote</a>
+    <div class="container">
+        <h1>Le Gagnant du Prix Goncourt</h1>
+        {% if winner_book %}
+            <p>Le livre gagnant est : <strong class="book-title">{{ winner_book.title }}</strong></p>
+        {% else %}
+            <p>Aucun gagnant sélectionné pour l'instant.</p>
+        {% endif %}
+        <div class="footer">
+            <a href="{{ url_for('revote') }}">Recommencer le vote</a>
+            <a href="/">Retour à l'accueil</a>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            © 2024 - Mon application
+        </div>
+    </footer>
 </body>
 </html>

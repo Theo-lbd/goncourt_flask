@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finalistes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Les 4 Finalistes</h1>
-    <ul>
-        {% for book in finalists_books %}
-            <li>{{ book.title }} (Auteur: {{ book.author_id }}, Éditeur: {{ book.publisher_id }})</li>
-        {% endfor %}
-    </ul>
-    <a href="/">Retour à l'accueil</a>
+    <div class="container">
+        <h1>Les 4 Finalistes</h1>
+        <ul class="book-list">
+            {% for book in finalists_books %}
+                <li>
+                    <span class="book-title">{{ book.title }}</span><br>
+                    <span class="author-name">{{ book.author_name }}</span><br>
+                    <span class="publisher-name">{{ book.publisher_name }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/">Retour à l'accueil</a>
+    </div>
+    <footer>
+        <div class="footer">
+            © 2024 - Mon application
+        </div>
+    </footer>
 </body>
 </html>

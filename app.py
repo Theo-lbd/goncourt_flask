@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from business.book import get_all_books
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Pour sécuriser les sessions
+app.secret_key = 'abcde_key'  # Pour sécuriser les sessions
 
 
 # Page d'accueil
@@ -24,6 +24,10 @@ def jury():
     if 'jury_authenticated' not in session:
         return redirect(url_for('login'))
 
+    # Vérifier si les 8 livres ont déjà été sélectionnés
+    if 'selected_books' in session:
+        return redirect(url_for('second_vote'))  # Passer directement à l'étape suivante
+
     if request.method == 'POST':
         selected_books = request.form.getlist('selected_books')
         if len(selected_books) == 8:
@@ -38,6 +42,10 @@ def jury():
 @app.route('/second_vote', methods=['GET', 'POST'])
 def second_vote():
     selected_books = session.get('selected_books', [])
+
+    # Vérifier si les finalistes ont déjà été sélectionnés
+    if 'finalists' in session:
+        return redirect(url_for('final_selection'))  # Passer directement à l'étape suivante
 
     if request.method == 'POST':
         selected_finalists = request.form.getlist('selected_finalists')
@@ -55,6 +63,10 @@ def second_vote():
 @app.route('/final', methods=['GET', 'POST'])
 def final_selection():
     finalists = session.get('finalists', [])
+
+    # Vérifier si un gagnant a déjà été sélectionné
+    if 'final_winner' in session:
+        return redirect(url_for('winner'))  # Passer directement à la page du gagnant
 
     if request.method == 'POST':
         selected_finalist = request.form.get('selected_finalist')
@@ -122,6 +134,18 @@ def public_winner():
     return render_template('public_winner.html', winner_book=winner_book)
 
 
+@app.route('/continue_voting')
+def continue_voting():
+    if 'final_winner' in session:
+        return redirect(url_for('winner'))  # Le gagnant a été choisi
+    elif 'finalists' in session:
+        return redirect(url_for('final_selection'))  # Les finalistes ont été choisis
+    elif 'selected_books' in session:
+        return redirect(url_for('second_vote'))  # Les 8 livres ont été choisis
+    else:
+        return redirect(url_for('jury'))  # Aucun vote encore effectué
+
+
 # --- Fin des routes pour le public ---
 
 # Route pour recommencer le vote
@@ -138,11 +162,14 @@ def revote():
 def login():
     if request.method == 'POST':
         password = request.form['password']
-        if password == '123456789':  # Le mot de passe du jury
+        if password == "123456789":
             session['jury_authenticated'] = True
-            return redirect(url_for('jury'))
+            # Vérifie si des livres ont déjà été sélectionnés
+            if 'selected_books' in session and session['selected_books']:
+                return redirect(url_for('continue_voting'))  # Redirige vers le vote
+            return redirect(url_for('jury'))  # Sinon, redirige vers la sélection
         else:
-            return "Mot de passe incorrect."
+            return "Mot de passe incorrect", 401
     return render_template('login.html')
 
 

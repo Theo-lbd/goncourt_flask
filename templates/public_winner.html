@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Gagnant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Le Livre Gagnant</h1>
-    <p>
-        Le gagnant est : <strong>{{ winner_book.title }}</strong><br>
-        Auteur ID : {{ winner_book.author_id }}<br>
-        Éditeur ID : {{ winner_book.publisher_id }}<br>
-    </p>
-    <a href="/">Retour à l'accueil</a>
+    <div class="container">
+        <h1>Le Livre Gagnant</h1>
+        <p>
+            Le gagnant est : <strong class="book-title">{{ winner_book.title }}</strong><br>
+            Auteur : <span class="author-name">{{ winner_book.author_name }}</span><br>
+            Éditeur : <span class="publisher-name">{{ winner_book.publisher_name }}</span><br>
+        </p>
+        <div class="footer">
+            <a href="/">Retour à l'accueil</a>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            © 2024 - Mon application
+        </div>
+    </footer>
 </body>
 </html>

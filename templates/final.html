@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sélection Finale</title>
+    <title>Final</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Sélection Finale des Livres</h1>
-    <form method="POST">
-        {% for book in finalists_books %}
-            <input type="radio" name="selected_finalist" value="{{ book.book_id }}"> {{ book.title }}<br>
-        {% endfor %}
-        <input type="submit" value="Sélectionner le gagnant">
-    </form>
-    <a href="/">Retour à l'accueil</a>
+    <div class="container">
+        <h1>Final</h1>
+        <ul class="book-list">
+            <li>
+                <span class="book-title">Titre du livre</span> -
+                <span class="author-name">Nom de l'auteur</span>,
+                <span class="publisher-name">Nom de l'éditeur</span>
+            </li>
+            <form method="POST">
+                {% for book in finalists_books %}
+                    <input type="radio" name="selected_finalist" value="{{ book.book_id }}"> {{ book.title }}<br>
+                {% endfor %}
+                <input type="submit" value="Sélectionner le gagnant">
+            </form>
+        </ul>
+    </div>
+    <footer>
+        <div class="footer">
+            © 2024 - Mon application
+        </div>
+    </footer>
 </body>
 </html>

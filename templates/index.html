@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concours Goncourt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Bienvenue au Concours Goncourt</h1>
-    <a href="/books">Voir tous les livres disponibles</a><br>
-    <a href="/public/selected_books">Voir les 8 livres sélectionnés</a><br>
-    <a href="/public/finalists">Voir les 4 finalistes</a><br>
-    <a href="/public/winner">Voir le livre gagnant</a><br>
-    <a href="/login">Se connecter en tant que jury</a><br>
+    <div class="container">
+        <h1>Bienvenue au Concours Goncourt</h1>
+        <a href="/books">Voir tous les livres disponibles</a><br>
+         {% if session.selected_books %}
+            <a href="/public/selected_books">Voir les 8 livres sélectionnés</a><br>
+        {% endif %}
+        {% if session.finalists %}
+            <a href="/public/finalists">Voir les 4 finalistes</a><br>
+        {% endif %}
+        {% if session.final_winner %}
+            <a href="/public/winner">Voir le livre gagnant</a><br>
+        {% endif %}
+        {% if session.jury_authenticated %}
+            <a href="/continue_voting">Continuer les votes</a><br>
+            <a href="/logout">Se déconnecter</a><br>
+        {% else %}
+            <a href="/login">Se connecter en tant que jury</a><br>
+        {% endif %}
+    </div>
+    <footer>
+        <div class="footer">
+            © 2024 - Mon application
+        </div>
+    </footer>
 </body>
 </html>
