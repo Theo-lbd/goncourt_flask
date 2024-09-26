@@ -6,12 +6,13 @@
     <title>Sélection Finale</title>
 </head>
 <body>
-     <h1>Le Gagnant du Prix Goncourt</h1>
-    {% if winner_book %}
-        <p>Le livre gagnant est : <strong>{{ winner_book.title }}</strong></p>
-    {% else %}
-        <p>Aucun gagnant sélectionné pour l'instant.</p>
-    {% endif %}
-    <a href="{{ url_for('revote') }}">Recommencer le vote</a>
+    <h1>Sélection Finale des Livres</h1>
+    <form method="POST">
+        {% for book in finalists_books %}
+            <input type="radio" name="selected_finalist" value="{{ book.book_id }}"> {{ book.title }}<br>
+        {% endfor %}
+        <input type="submit" value="Sélectionner le gagnant">
+    </form>
+    <a href="/">Retour à l'accueil</a>
 </body>
 </html>

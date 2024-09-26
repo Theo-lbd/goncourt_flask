@@ -7,7 +7,10 @@
 </head>
 <body>
     <h1>Bienvenue au Concours Goncourt</h1>
-    <a href="{{ url_for('display_books') }}">Voir tous les livres</a>
-    <a href="{{ url_for('login') }}">Accès Jury</a>
+    <a href="/books">Voir tous les livres disponibles</a><br>
+    <a href="/public/selected_books">Voir les 8 livres sélectionnés</a><br>
+    <a href="/public/finalists">Voir les 4 finalistes</a><br>
+    <a href="/public/winner">Voir le livre gagnant</a><br>
+    <a href="/login">Se connecter en tant que jury</a><br>
 </body>
 </html>

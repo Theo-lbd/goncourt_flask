@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalistes</title>
+</head>
+<body>
+    <h1>Les 4 Finalistes</h1>
+    <ul>
+        {% for book in finalists_books %}
+            <li>{{ book.title }} (Auteur: {{ book.author_id }}, Éditeur: {{ book.publisher_id }})</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Retour à l'accueil</a>
+</body>
+</html>
